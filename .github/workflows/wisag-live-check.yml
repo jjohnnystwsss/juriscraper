@@ -1,0 +1,50 @@
+name: wisag live check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install
+        run: pip install -e .
+      - name: Fetch listing and opinion pages
+        run: |
+          mkdir -p out
+          python - <<'PY'
+          import re, httpx, pathlib
+          out = pathlib.Path("out")
+          c = httpx.Client(follow_redirects=True, timeout=60,
+                           headers={"User-Agent": "Mozilla/5.0"})
+          for name in ("recent", "archival"):
+              r = c.get(f"https://docs.legis.wisconsin.gov/misc/oag/{name}")
+              print(name, r.status_code, r.url, len(r.content))
+              (out / f"wisag_{name}.html").write_bytes(r.content)
+              links = re.findall(r'href="([^"]*/oag(\d+-\d{2}))"', r.text)
+              seen = []
+              for href, num in links:
+                  if num not in seen:
+                      seen.append(num)
+              pick = seen[:7] if name == "recent" else [n for n in seen if n.endswith("-98") or n.endswith("-99")]
+              for num in pick:
+                  href = next(h for h, n in links if n == num)
+                  url = httpx.URL("https://docs.legis.wisconsin.gov").join(href)
+                  p = c.get(url)
+                  print(" ", num, p.status_code, p.url, len(p.content))
+                  (out / f"wisag_subexample_oag{num}.html").write_bytes(p.content)
+          PY
+      - name: Regular scrape
+        run: python sample_caller.py -c juriscraper.opinions.united_states.attorney_general.wisag -v 2>&1 | tee out/regular.log
+        continue-on-error: true
+      - name: 1998 backscrape
+        run: python sample_caller.py -c juriscraper.opinions.united_states.attorney_general.wisag --backscrape --backscrape-start 1998/01/01 --backscrape-end 1998/12/31 -v 2>&1 | tee out/backscrape.log
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wisag-live
+          path: out/
