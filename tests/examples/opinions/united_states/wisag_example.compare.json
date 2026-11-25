@@ -1,0 +1,62 @@
+[
+  {
+    "case_dates": "2022-06-02",
+    "case_names": "Wisconsin Attorney General Opinion OAG 1-22",
+    "download_urls": "https://docs.legis.wisconsin.gov/document/oag/oag1-22.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "OAG 1-22",
+    "judges": "Josh Kaul",
+    "summaries": "",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2020-10-27",
+    "case_names": "Wisconsin Attorney General Opinion OAG 4-20",
+    "download_urls": "https://docs.legis.wisconsin.gov/document/oag/oag4-20.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "OAG 4-20",
+    "judges": "Josh Kaul",
+    "summaries": "",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2020-05-15",
+    "case_names": "Wisconsin Attorney General Opinion OAG 3-20",
+    "download_urls": "https://docs.legis.wisconsin.gov/document/oag/oag3-20.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "OAG 3-20",
+    "judges": "Josh Kaul",
+    "summaries": "",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2020-03-10",
+    "case_names": "Wisconsin Attorney General Opinion OAG 2-20",
+    "download_urls": "https://docs.legis.wisconsin.gov/document/oag/oag2-20.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "OAG 2-20",
+    "judges": "Josh Kaul",
+    "summaries": "",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2020-01-28",
+    "case_names": "Wisconsin Attorney General Opinion OAG 1-20",
+    "download_urls": "https://docs.legis.wisconsin.gov/document/oag/oag1-20.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "OAG 1-20",
+    "judges": "Josh Kaul",
+    "summaries": "",
+    "case_name_shorts": ""
+  }
+]
