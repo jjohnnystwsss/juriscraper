@@ -2,6 +2,8 @@ name: wisag live check
 
 on:
   workflow_dispatch:
+  push:
+    branches: [wisag-live-check]
 
 jobs:
   live:
